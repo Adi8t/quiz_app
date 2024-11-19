@@ -22,13 +22,13 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = config('KEY')
+SECRET_KEY = 'z!h+t$hl87y(9hqdeyw6)v86b^h4#g2mm$@xaksyxl(v09&*h#'
 
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['quiz-app-django.onrender.com']
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -129,11 +129,14 @@ STATIC_URL = '/static/'
 MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'media'
 
-# STATICFILES_DIRS = [
-#     BASE_DIR / "static"
-# ]
+# settings.py
 
-STATIC_ROOT = BASE_DIR/'static/'
+import os
+
+STATIC_URL = '/static/'
+STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]  # If you have static files inside your project
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')  # For collectstatic command (deployment)
+
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
